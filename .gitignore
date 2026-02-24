@@ -36,3 +36,6 @@
 **/*.exe
 
 desktop.ini
+.Ds_Store
+
+/.DS_Store
