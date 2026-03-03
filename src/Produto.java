@@ -62,9 +62,9 @@ public class Produto {
      */
     @Override
 	public String toString() {
-    	
-    	NumberFormat moeda = NumberFormat.getCurrencyInstance();
-    	
+		
+		NumberFormat moeda = NumberFormat.getCurrencyInstance();
+		
 		return String.format("NOME: " + descricao + ": " + moeda.format(valorDeVenda()));
 	}
 }

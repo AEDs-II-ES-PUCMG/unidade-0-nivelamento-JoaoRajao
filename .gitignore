@@ -1,6 +1,8 @@
 # Compiled class file
 **/*.class
-
+.Ds_Store
+/.DS_Store
+.DS_Store
 # Log file
 **/*.log
 
@@ -36,6 +38,4 @@
 **/*.exe
 
 desktop.ini
-.Ds_Store
 
-/.DS_Store
