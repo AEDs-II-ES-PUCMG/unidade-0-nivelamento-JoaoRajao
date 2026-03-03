@@ -1,5 +1,5 @@
-
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 public class ProdutoPerecivel extends Produto {
@@ -10,7 +10,7 @@ public class ProdutoPerecivel extends Produto {
     private final LocalDate dataDeValidade;
 
     public ProdutoPerecivel(String desc, double precoCusto, double margemLucro, LocalDate dataDeValidade) {
-		super(desc, precoCusto, margemLucro);
+        super(desc, precoCusto, margemLucro);
         if (dataDeValidade == null) {
             throw new IllegalArgumentException("Data de validade inválida.");
         }
@@ -18,7 +18,7 @@ public class ProdutoPerecivel extends Produto {
             throw new IllegalArgumentException("Produto já fora da data de validade.");
         }
         this.dataDeValidade = dataDeValidade;
-	}
+    }
 
     @Override
     public double valorDeVenda() {
@@ -35,10 +35,22 @@ public class ProdutoPerecivel extends Produto {
         }
 
         return valorBase;
-	}
+    }
+
+    /**
+     * Gera uma linha de texto a partir dos dados do produto. Preço e margem de lucro vão formatados com 2 casas decimais.
+     * Data de validade vai no formato dd/mm/aaaa
+     * @return Uma string no formato "2;descrição;preçoDeCusto;margemDeLucro;dataDeValidade"
+     */
+    @Override
+    public String gerarDadosTexto() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return String.format("2;%s;%.2f;%.2f;%s",
+                getDescricao(), precoCusto, margemLucro, dataDeValidade.format(formatter));
+    }
 
     @Override
-	public String toString() {
+    public String toString() {
         return super.toString();
-	}
+    }
 }
